@@ -1,9 +1,9 @@
-.posts-list {
+.postsList {
   list-style: none;
   padding: 0;
 }
 
-.post-card {
+.postCard {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 16px;

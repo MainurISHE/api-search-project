@@ -9,7 +9,8 @@ interface Props {
 
 export default function UsersList({ users, onSelect }: Props) {
     return (
-        <div className="users-list">
+        <div className={style.usersList}>
+            <h2>Users List</h2>
             {users.map((u) => (
                 <UsersCard key={u.id} user={u} onClick={(onSelect)} />
             ))}

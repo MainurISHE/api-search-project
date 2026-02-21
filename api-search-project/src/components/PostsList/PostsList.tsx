@@ -7,10 +7,10 @@ interface Props {
 
 export default function PostsList({ posts }: Props) {
     return (
-        <div className="posts-list">
+        <div className={style.postsList}>
             <h2>Posts List</h2>
             {posts.map((p) => (
-                <div key={p.id} className="post-card">
+                <div key={p.id} className={style.postCard}>
                     {p.title}
                 </div>
             ))}
