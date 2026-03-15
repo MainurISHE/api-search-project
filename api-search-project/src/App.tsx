@@ -4,6 +4,7 @@ import PostsList from "./components/PostsList/PostsList";
 import type { User } from "./types/user";
 import type { Post } from "./types/post";
 import "./App.css";
+import { api } from "./api/api";
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
@@ -11,22 +12,16 @@ function App() {
 
   useEffect(() => {
     async function loadUsers() {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users",
-      );
-      const data: User[] = await response.json();
-      setUsers(data);
+      const response = await api.get<User[]>("https://jsonplaceholder.typicode.com/users");
+      setUsers(response.data);
     }
 
     loadUsers();
   }, []);
 
   async function handleUserSelect(userId: number) {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
-    );
-    const data: Post[] = await response.json();
-    setPosts(data);
+    const response = await api.get<Post[]>(`/posts?userId=${userId}`);
+    setPosts(response.data);
   }
 
   return (
